@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+FROM ubuntu:20.04
+CMD echo "This is a test"
+apt-get update
+apt-get install wget
+wget http://download.ni.com/ni-linux-desktop/2020.07/ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb
+apt install ./ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb
+apt update
+apt install ni-daqmx
+dkms autoinstall
+
+
+podman run -ti localhost/my-ubuntu-nitest:v1.2 bash
+podman run -ti --network=host localhost/my-ubuntu-nitest:v1.2 bash
+podman run -ti --network=cni-podman1 localhost/my-ubuntu-nitest:v1.2 bash
