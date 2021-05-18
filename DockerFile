@@ -2,14 +2,35 @@
 FROM ubuntu:20.04
 CMD echo "This is a test"
 apt-get update
-apt-get install wget
+apt-get install linux-generic
+apt-get install wget -y
 wget http://download.ni.com/ni-linux-desktop/2020.07/ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb
-apt install ./ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb
+apt install ./ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb -y
 apt update
-apt install ni-daqmx
+apt install ni-daqmx -y
 dkms autoinstall
 
 
 podman run -ti localhost/my-ubuntu-nitest:v1.2 bash
 podman run -ti --network=host localhost/my-ubuntu-nitest:v1.2 bash
 podman run -ti --network=cni-podman1 localhost/my-ubuntu-nitest:v1.2 bash
+
+docker run -ti --network=host -v /usr/src/ ubuntu:20.04
+
+https://askubuntu.com/questions/187502/how-do-i-use-apt-get-to-update-to-the-latest-kernel
+
+#!/usr/bin/env bash
+
+sudo apt-get update
+kernel_release="$(uname -r | cut --complement -d'.' -f3)"
+kernel_release_versions="$(apt-cache search linux-image-${kernel_release})"
+kernel_release_versions_generic="$(grep linux-image-"${kernel_release_version}".*-generic <<< "$kernel_release_versions")"
+newest_kernel_of_release="$(echo "$kernel_release_versions_generic" | tail -n1 | cut -d' ' -f1 )"
+
+sudo apt-get install $newest_kernel_of_release
+
+sudo apt-get dist-upgrade
+
+newest_kernel_of_release_headers=${newest_kernel_of_release/image/headers}
+
+sudo apt-get install $newest_kernel_of_release_headers
