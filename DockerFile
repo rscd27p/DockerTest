@@ -1,4 +1,5 @@
 docker run -ti --network=host ubuntu:18.04 bash
+docker run -ti --network=host --privileged my-ubuntu18.04-image:v1.0 bash
 
 # syntax=docker/dockerfile:1
 FROM ubuntu:18.04
@@ -7,18 +8,24 @@ CMD apt-get update
 CMD apt-get install linux-generic -y
 CMD apt-get install wget -y
 CMD apt-get install systemd -y
+CMD kernel_release="$(uname -r | cut --complement -d'.' -f3)"
+CMD kernel_release_versions="$(apt-cache search linux-image-${kernel_release})"
+kernel_release_versions_generic="$(grep linux-image-"${kernel_release_version}".*-generic <<< "$kernel_release_versions")"
+CMD newest_kernel_of_release="$(echo "$kernel_release_versions_generic" | tail -n1 | cut -d' ' -f1 )"
+CMD apt-get install $newest_kernel_of_release -y
+CMD newest_kernel_of_release_headers=${newest_kernel_of_release/image/headers}
+CMD apt-get install $newest_kernel_of_release_headers
 CMD wget http://download.ni.com/ni-linux-desktop/2020.07/ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb
 CMD apt install ./ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb -y
 CMD apt update
-CMD kernel_release="$(uname -r | cut --complement -d'.' -f3)"
-CMD kernel_release_versions="$(apt-cache search linux-image-${kernel_release})"
-ernel_release_versions_generic="$(grep linux-image-"${kernel_release_version}".*-generic <<< "$kernel_release_versions")"
-CMD newest_kernel_of_release="$(echo "$kernel_release_versions_generic" | tail -n1 | cut -d' ' -f1 )"
-CMD apt-get install $newest_kernel_of_release
-CMD newest_kernel_of_release_headers=${newest_kernel_of_release/image/headers}
-CMD apt-get install $newest_kernel_of_release_headers
-CMD apt-get update
 CMD apt install linux-headers-$(uname -r) -y
 CMD apt install ni-daqmx -y
 CMD dkms autoinstall
+CMD apt-get install python3-pip
+CMD apt-get install git
+CMD python3 -m pip install nidaqmx
+CMD python3 -m pip install PyDAQmx
 
+
+# Know if you are inside a container 
+cat /proc/self/cgroup
