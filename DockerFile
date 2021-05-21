@@ -1,3 +1,5 @@
+docker run -ti --network=host ubuntu:18.04 bash
+
 # syntax=docker/dockerfile:1
 FROM ubuntu:18.04
 CMD echo "This is a test"
@@ -10,15 +12,13 @@ CMD apt install ./ni-software-2020-bionic_20.1.0.49152-0+f0_all.deb -y
 CMD apt update
 CMD kernel_release="$(uname -r | cut --complement -d'.' -f3)"
 CMD kernel_release_versions="$(apt-cache search linux-image-${kernel_release})"
-CMD kernel_release_versions_generic="$(grep linux-image-"${kernel_release_version}".*-generic <<< CMD "$kernel_release_versions")"
+ernel_release_versions_generic="$(grep linux-image-"${kernel_release_version}".*-generic <<< "$kernel_release_versions")"
 CMD newest_kernel_of_release="$(echo "$kernel_release_versions_generic" | tail -n1 | cut -d' ' -f1 )"
 CMD apt-get install $newest_kernel_of_release
 CMD newest_kernel_of_release_headers=${newest_kernel_of_release/image/headers}
 CMD apt-get install $newest_kernel_of_release_headers
 CMD apt-get update
+CMD apt install linux-headers-$(uname -r) -y
 CMD apt install ni-daqmx -y
 CMD dkms autoinstall
-
-
-Robert Des Rosier
 
