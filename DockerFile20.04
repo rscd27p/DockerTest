@@ -1,0 +1,8 @@
+docker run -ti --network=host --privileged ubuntu:20.04 bash
+apt-get update
+apt-get install net-tools -y
+apt-get install iputils-ping -y
+apt-get install python3-pip -y
+python3 -m pip install rpyc
+apt-get install git -y
+
