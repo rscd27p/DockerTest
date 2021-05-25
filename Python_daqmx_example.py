@@ -4,7 +4,7 @@ HOSTNAME = 'rscd27-Precision-T3610'
 PORT = 18861
 
 connection = rpyc.connect(HOSTNAME, PORT)
-nidaqmx = connection.root.nidmm
+nidaqmx = connection.root.nidaqmx
 
 system = nidaqmx.system.System.local()
 system.driver_version

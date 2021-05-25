@@ -2,7 +2,7 @@ import rpyc
 import nidaqmx
 
 class MyService(rpyc.Service):
-   exposed_nidmm = nidaqmx
+   exposed_nidaqmx = nidaqmx
 
 if __name__ == "__main__":
 	from rpyc.utils.server import ThreadedServer
