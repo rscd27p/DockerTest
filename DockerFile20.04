@@ -1,4 +1,4 @@
-docker run -ti --network=host --privileged ubuntu:20.04 bash
+docker run -ti --network=host ubuntu:20.04 bash
 apt-get update
 apt-get install net-tools -y
 apt-get install iputils-ping -y
