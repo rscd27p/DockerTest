@@ -6,3 +6,9 @@ apt-get install python3-pip -y
 python3 -m pip install rpyc
 apt-get install git -y
 
+
+deb [trusted=yes] http://argohttp.natinst.com/ni/linuxpkg/feeds/deb/ni-d/ni-dcpower/21.0.0/21.0.0.213-0+d213/focal/inline focal ni-dcpower
+deb [trusted=yes] http://argohttp.natinst.com/ni/linuxpkg/feeds/deb/ni-s/ni-switch/21.0.0/21.0.0.21-0+d21/focal/inline focal ni-switch
+deb [trusted=yes] http://argohttp.natinst.com/ni/linuxpkg/feeds/deb/ni-d/ni-daqmx/21.0.0/21.0.0.80-0+d80/focal/inline focal ni-daqmx
+deb [trusted=yes] http://argohttp.natinst.com/ni/linuxpkg/feeds/deb/ni-d/ni-dmm/21.0.0/21.0.0.19-0+d19/focal/inline/ focal ni-dmm
+
