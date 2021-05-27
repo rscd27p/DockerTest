@@ -31,9 +31,9 @@ NI_DMM_port = 18863
 if __name__ == "__main__":
 	print("Starting NI-SWITCH and NI-DCPower rpyc service")
 	print("Press Ctrl+C to stop this service")
-	t1 = ThreadedServer(NI_SWTICH_service, port = NI_SWTICH_port , protocol_config = {"allow_public_attrs" : True, "allow_all_attrs" : True})
-	t2 = ThreadedServer(NI_DCPower_service, port = NI_DCPower_port, protocol_config = {"allow_public_attrs" : True, "allow_all_attrs" : True})
-	t3 = ThreadedServer(NI_DMM_service, port = NI_DMM_port, protocol_config = {"allow_public_attrs" : True, "allow_all_attrs" : True})
+	t1 = ThreadedServer(NI_SWTICH_service, port = 18861, protocol_config = {"allow_public_attrs" : True, "allow_all_attrs" : True})
+	t2 = ThreadedServer(NI_DCPower_service, port = 18861, protocol_config = {"allow_public_attrs" : True, "allow_all_attrs" : True})
+	t3 = ThreadedServer(NI_DMM_service, port = 18861, protocol_config = {"allow_public_attrs" : True, "allow_all_attrs" : True})
 	t1.start()
 	t2.start()
 	t3.start()
