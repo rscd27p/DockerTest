@@ -18,7 +18,7 @@ def route_meas():
 		with nidcpower.Session(resource_name='PXI1Slot2', channels='0') as my_smu:
 			with niswitch.Session(resource_name="PXI1Slot7", topology= '2575/2-wire 95x1 Mux', reset_device=True) as my_switch:
 				#Configure DC Power Output
-				
+				'''
 				my_smu.source_mode = nidcpower.SourceMode.SINGLE_POINT
 				my_smu.output_function = nidcpower.OutputFunction.DC_VOLTAGE
 				my_smu.voltage_level = 2.5
@@ -26,8 +26,8 @@ def route_meas():
 				my_smu.voltage_level_autorange = True
 				my_smu.current_limit_autorange = True
 				my_smu.source_delay = hightime.timedelta(seconds=0.1)
-				
-				#my_smu.import_attribute_configuration_file('smu_config.nidcpowerconfig')
+				'''
+				my_smu.import_attribute_configuration_file('smu_config.nidcpowerconfig')
 				#Start voltage generation in CH0
 				print('Setting Power Supply CH0 to 2.5V ...')
 				my_smu.initiate()

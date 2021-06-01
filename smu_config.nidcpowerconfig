@@ -1,9 +1,9 @@
 {
    "formatVersion": 3,
    "oldestCompatibleFormatVersion": 2,
-   "timeStamp": "2021-05-27T23:53:03",
+   "timeStamp": "2021-06-01T22:55:11",
    "session": {
-      "resourceName": "DCPower",
+      "resourceName": "myDCPower",
       "channels": "0",
       "optionString": ""
    },
@@ -13,7 +13,7 @@
    },
    "devices": [
       {
-         "alias": "DCPower",
+         "alias": "myDCPower",
          "modelNumber": 6816
       }
    ],
@@ -53,6 +53,12 @@
          "name": "NIDCPOWER_ATTR_CURRENT_LIMIT",
          "channel": "0",
          "value": 0.05
+      },
+      {
+         "id": 1250006,
+         "name": "NIDCPOWER_ATTR_OUTPUT_ENABLED",
+         "channel": "0",
+         "value": true
       },
       {
          "id": 1150054,
