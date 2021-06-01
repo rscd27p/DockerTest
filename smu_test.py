@@ -13,13 +13,13 @@ def route_meas():
 	# Simulated Flag
 	SIMULATE = False
 	print('Starting the program ...')
-	my_smu = nidcpower.Session(resource_name='PXI1Slot2', channels='0')
+	#my_smu = nidcpower.Session(resource_name='PXI1Slot2', channels='0')
 	my_dmm = nidmm.Session("PXI1Slot4")
 	#Configure DC Power Output
-	#nidcpower.Session.source_mode.SINGLE_POINT
+	nidcpower.Session(resource_name='PXI1Slot2', channels='0').source_mode.SINGLE_POINT
 	#my_smu.output_function = nidcpower.OutputFunction.DC_VOLTAGE
 	#print(dir(my_smu))
-	#my_smu.voltage_level = 2.5
+	nidcpower.Session(resource_name='PXI1Slot2', channels='0').import_attribute_configuration_file('home/test.txt')
 	#my_smu.voltage_level = 2.5
 	#my_smu.current_limit = 0.05
 	#my_smu.voltage_level_autorange = True
@@ -28,13 +28,13 @@ def route_meas():
 
 	#Start voltage generation in CH0
 	print('Setting Power Supply CH0 to 2.5V ...')
-	my_smu.initiate()
-	my_smu.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
+	nidcpower.Session(resource_name='PXI1Slot2', channels='0').initiate()
+	nidcpower.Session(resource_name='PXI1Slot2', channels='0').wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
 	time.sleep(5)
 	my_dmm.configure_measurement_digits(nidmm.Function.DC_VOLTS, 10, 7.5)
 	print("Measurement: " + str(my_dmm.read()))
 
-	my_smu.reset()
+	nidcpower.Session(resource_name='PXI1Slot2', channels='0').reset()
 	return 0
 
 def display_rlts(route_a, route_b, nroute_a, nroute_b, meas_1, meas_2, total_ex):

@@ -1,0 +1,66 @@
+{
+   "formatVersion": 3,
+   "oldestCompatibleFormatVersion": 2,
+   "timeStamp": "2021-05-27T23:53:03",
+   "session": {
+      "resourceName": "DCPower",
+      "channels": "0",
+      "optionString": ""
+   },
+   "generatedBy": {
+      "name": "nidcpowerPAL_aux.dll",
+      "version": "20.6.0f2"
+   },
+   "devices": [
+      {
+         "alias": "DCPower",
+         "modelNumber": 6816
+      }
+   ],
+   "attributes": [
+      {
+         "id": 1150008,
+         "name": "NIDCPOWER_ATTR_OUTPUT_FUNCTION",
+         "channel": "0",
+         "value": 1006
+      },
+      {
+         "id": 1150015,
+         "name": "NIDCPOWER_ATTR_VOLTAGE_LEVEL_AUTORANGE",
+         "channel": "0",
+         "value": 1
+      },
+      {
+         "id": 1150016,
+         "name": "NIDCPOWER_ATTR_CURRENT_LIMIT_AUTORANGE",
+         "channel": "0",
+         "value": 1
+      },
+      {
+         "id": 1150051,
+         "name": "NIDCPOWER_ATTR_SOURCE_DELAY",
+         "channel": "0",
+         "value": 0.1
+      },
+      {
+         "id": 1250001,
+         "name": "NIDCPOWER_ATTR_VOLTAGE_LEVEL",
+         "channel": "0",
+         "value": 2.5
+      },
+      {
+         "id": 1250005,
+         "name": "NIDCPOWER_ATTR_CURRENT_LIMIT",
+         "channel": "0",
+         "value": 0.05
+      },
+      {
+         "id": 1150054,
+         "name": "NIDCPOWER_ATTR_SOURCE_MODE",
+         "channel": "",
+         "value": 1020
+      }
+   ],
+   "advancedSequences": [],
+   "sessionType": "SynchronizedChannels"
+}
