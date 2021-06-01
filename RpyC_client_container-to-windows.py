@@ -112,6 +112,6 @@ def display_rlts(route_a, route_b, nroute_a, nroute_b, meas_1, meas_2, total_ex)
 start_t = time.perf_counter()
 route_a, route_b, nroute_a, nroute_b, meas_1, meas_2 = route_meas()
 end_t = time.perf_counter()
-total_ex = (end_t -start_t)
+total_ex = (end_t -start_t) * 1000
 display_rlts(route_a, route_b, nroute_a, nroute_b, meas_1, meas_2, total_ex)
 
