@@ -44,7 +44,7 @@ def route_meas():
 
 				end = time.perf_counter()
 				route_a = (end - start) * 1000
-				print('Channel CH0 and COM are now connected.')
+				print('Channel CH0 and COM0 are now connected.')
 
 				#Take DMM measurement
 				start = time.perf_counter()
@@ -59,9 +59,7 @@ def route_meas():
 
 				end = time.perf_counter()
 				nroute_a = (end - start) * 1000
-				print('Channel CH0 and COM are now disconnected.')
-
-				time.sleep(3)
+				print('Channel CH0 and COM0 are now disconnected.')
 
 				#Route DMM to Short-Circuit
 				print('Routing DMM to a short-circuited path ...')
@@ -71,7 +69,7 @@ def route_meas():
 
 				end = time.perf_counter()
 				route_b = (end - start) * 1000
-				print('Channel CH1 and COM are now connected.')
+				print('Channel CH1 and COM0 are now connected.')
 
 				#Take DMM measurement
 				start = time.perf_counter()
@@ -85,7 +83,7 @@ def route_meas():
 				my_switch.disconnect(channel1= 'ch1', channel2= 'com0')
 				end = time.perf_counter()
 				nroute_b = (end - start) * 1000
-				print('Channel CH1 and COM are now disconnected.')
+				print('Channel CH1 and COM0 are now disconnected.')
 
 				#Reset DC Power Session
 				my_smu.reset()
@@ -99,12 +97,12 @@ def display_rlts(route_a, route_b, nroute_a, nroute_b, meas_1, meas_2, total_ex)
 	print('******************************************************')
 	print('Task                         * Time (ms)              ')
 	print('******************************************************')
-	print('Connect CHO to COM           *', str(route_a))
+	print('Connect CHO to COM0          *', str(route_a))
 	print('Take DMM Measurement 1       *', str(meas_1))
-	print('Disconnect CH0 and COM       *', str(nroute_a))
-	print('Connect CH1 to COM           *', str(route_b))
+	print('Disconnect CH0 and COM0      *', str(nroute_a))
+	print('Connect CH1 to COM0          *', str(route_b))
 	print('Take DMM Measurement 2       *', str(meas_2))
-	print('Disconnect CH0 and COM       *', str(nroute_b))
+	print('Disconnect CH0 and COM0      *', str(nroute_b))
 	print('Total Execution Time         *', str(total_ex))
 	print('******************************************************')
 

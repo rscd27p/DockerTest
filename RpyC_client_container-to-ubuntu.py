@@ -33,6 +33,11 @@ def route_meas():
 				my_smu.initiate()
 				my_smu.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
 
+				measurements = my_smu.measure_multiple()
+				print('Power Supply Measurements')
+				print('  Voltage    Current')
+				print(measurements[0].voltage, measurements[0].current)
+
 				#Route DC Power CH0 to DMM
 				start = time.perf_counter()
 				my_switch.connect(channel1= 'ch0', channel2= 'com')
