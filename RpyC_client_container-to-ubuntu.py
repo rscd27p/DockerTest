@@ -27,7 +27,7 @@ def route_meas():
 				my_smu.current_limit_autorange = True
 				my_smu.source_delay = hightime.timedelta(seconds=0.1)
 				'''
-				my_smu.import_attribute_configuration_file('smu_config.nidcpowerconfig')
+				my_smu.import_attribute_configuration_file('smu_config_ubuntu.nidcpowerconfig')
 				#Start voltage generation in CH0
 				print('Setting Power Supply CH0 to 2.5V ...')
 				my_smu.initiate()
